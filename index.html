@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock - Paper - Scissors</title>
+</head>
+<body>
+  <script>
+    alert("Welcome to the game! Rock, Paper or Scissors!!!");
+    alert("You have 5 rounds to win! Can you beat me? JaJaJa...!!");
+    alert("Start!")
+    let playerSelection;
+    let computerSelection;
+
+    let gun;
+    
+    function computerPLay(gun) {
+        gun = Math.floor(Math.random() * 3) +1;
+        if (gun == 1) {
+                return ("rock");
+            } else if (gun == 2) {
+                return ("paper");
+            } else {
+                 return ("scissors");
+            }
+    }
+
+    let playerCounter;
+    let computerCounter;
+
+    playerCounter = 0;
+    computerCounter = 0;
+    roundCounter = 0;
+
+    function playRound(playerSelection, computerSelection) { 
+        roundCounter = roundCounter + 1;
+        alert ("Round: " + roundCounter + " !!");
+        playerSelection = prompt("What's your weapon? You can write only: rock / paper / scissors");  
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = computerPLay(gun);   
+        if (playerSelection == computerSelection) {
+            alert ("My choice was: " + computerSelection + " !!!");
+            alert ("Draw");
+            alert("Your score: " + playerCounter + " , My score: " + computerCounter);
+        } else if (
+            ((playerSelection == "rock") && (computerSelection == "paper")) || 
+            ((playerSelection == "paper") && (computerSelection == "scissors")) || 
+            ((playerSelection == "scissors") && (computerSelection == "rock"))
+            ) {
+                alert ("My choice was: " + computerSelection + " !!!");
+                alert ("You lose! " + computerSelection + " beats " + playerSelection);
+                computerCounter = computerCounter + 1;
+                alert ("Your score: " + playerCounter + " , My score: " + computerCounter);
+        } else if (
+            ((playerSelection == "rock") && (computerSelection == "scissors")) ||
+            ((playerSelection == "paper") && (computerSelection == "rock")) ||
+            ((playerSelection == "scissors") && (computerSelection == "paper"))
+            ) {
+                alert ("My choice was: " + computerSelection + " !!!");
+                alert ("You win! " + playerSelection + " beats " + computerSelection);
+                playerCounter = playerCounter + 1;
+                alert ("Your score: " + playerCounter + " , My score: " + computerCounter);               
+        } else {
+                alert ("If you don't choice anyone, the round is draw! Let's continue!");
+        }
+    }
+     
+    function game(computerCounter, playerCounter) {
+         if (computerCounter == playerCounter) {
+             alert ("Nobody wins! We tied the game! " + "Your score: " + playerCounter + " , My score: " + computerCounter);
+         } else if (computerCounter > playerCounter) {
+             alert ("You are the loser!!! I wins!! " + "Your score: " + playerCounter + " , My score: " + computerCounter);
+         } else if (computerCounter < playerCounter) {
+             alert ("You are the winner!!! I loses!!! " + "Your score: " + playerCounter + " , My score: " + computerCounter)
+         } else {
+             alert ("Restart the game, press F5.")
+         }
+    }
+     computerPLay(gun);
+     playRound(playerSelection, computerSelection);
+     computerPLay(gun);  
+     playRound(playerSelection, computerSelection);
+     computerPLay(gun);
+     playRound(playerSelection, computerSelection);
+     computerPLay(gun);
+     playRound(playerSelection, computerSelection);
+     computerPLay(gun);
+     playRound(playerSelection, computerSelection);
+     alert ("And the results are...")
+     game(computerCounter, playerCounter);
+     alert ("Goodbye!! If you want to play with me again, just restart pressing F5.")
+
+  </script>
+</body>
+</html>
